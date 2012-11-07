@@ -26,21 +26,21 @@ import groovy.transform.TypeChecked
 class P009 {
 	int sum = 1000
 
-	boolean pyth(Integer a, Integer b, Integer c) {
+	boolean pythagorean(Integer a, Integer b, Integer c) {
 		a ** 2 + b ** 2 == c ** 2
 	}
 
 	def p() {
-		def a = (1..sum).collect{ Integer a ->
-			(a + 1..sum).collect{ Integer b ->
+		def a = (1..sum).collect { Integer a ->
+			(a + 1..sum).collect { Integer b ->
 				new MyTuple(a, b, sum - a - b)
 			}
 		}
-		def b = a.flatten().findAll{ MyTuple t ->
-			t.a <= t.b && t.b <= t.c && pyth(t.a, t.b, t.c)
+		def list = a.flatten().findAll { MyTuple t ->
+			t.a <= t.b && t.b <= t.c && pythagorean(t.a, t.b, t.c)
 		}
-		println b
-		assert(b.first() == new MyTuple(200, 375, 425))
+		println list
+		assert(list.first() == new MyTuple(200, 375, 425))
 	}
 
 	@Canonical

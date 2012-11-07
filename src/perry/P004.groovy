@@ -25,19 +25,17 @@ class P004 {
 	def min = 100
 	def max = 999
 	def p() {
-		List<Integer> nums = (min..max).toList()
-//		def nums = (min..max)
-		def nums2 = nums.collect { Integer it ->
+		List<Integer> range = (min..max).toList()
+		def products = range.collect { Integer it ->
 			List<Integer> b = ((it + 1)..max).toList()
 			b.collect {
 				Integer a -> it * a
 			}
 		}.flatten()
-		def c = nums2.findAll{isPalindrome(it.toString())}
-		def a = c.sort()
-		def b = a.last()
-		println(b)
-		assert(b == 906609)
+		def palindromes = products.findAll { isPalindrome(it.toString()) }
+		def large = palindromes.sort().last()
+		println(large)
+		assert(large == 906609)
 	}
 
 	boolean isPalindrome(String s) {

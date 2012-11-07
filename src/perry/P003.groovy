@@ -20,21 +20,20 @@ import groovy.transform.TypeChecked
 class P003 {
 
 	def p() {
-
-		def a = factors(new BigInteger("600851475143"))
-		def c = factors(new BigInteger("13195"))
-		def high = a.last()
-		println high
-		assert(high == 6857)
+		def low = new BigInteger("13195")
+		def high = new BigInteger("600851475143")
+		def a = factors(high)
+		def largePrime = a.last()
+		println largePrime
+		assert(largePrime == 6857)
 	}
 
 	List<BigInteger> factors(BigInteger i) {
 		myfactors(i, BigInteger.ONE, Math.sqrt(i.toDouble()).toBigInteger() + 1, [])
 	}
 
-	@TypeChecked
 	List<BigInteger> myfactors(BigInteger numerator, BigInteger denominator, BigInteger until,
-				   List<BigInteger> factors) {
+			List<BigInteger> factors) {
 
 		while (denominator < until) {
 			if (numerator % denominator == 0) {

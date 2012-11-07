@@ -41,18 +41,15 @@ class P008 {
 	def p() {
 		println nums
 		def a = nums.replaceAll(/\s+/, '')
-		println a
-		def b = a.toCharArray().collect { Integer.parseInt(it.toString())}
-		println b
-
-		def seq = 5
-		def c = (0..b.size() - seq).collect{ Integer it ->
-			b[it..it + seq - 1].inject(1){ Integer acc, Integer item ->
+		def list = a.toCharArray().collect { Integer.parseInt(it.toString()) }
+		def seqSize = 5
+		def products = (0..list.size() - seqSize).collect { Integer it ->
+			list[it..it + seqSize - 1].inject(1) { Integer acc, Integer item ->
 				acc * item
 			}
 		}
-		def d = c.max()
-		assert(d == 40824)
+		def max = products.max()
+		assert(max == 40824)
 	}
 
 }

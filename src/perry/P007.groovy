@@ -23,15 +23,15 @@ import groovy.transform.TypeChecked
 class P007 {
 
 	def p () {
-		def s = new InfiniteSeq()
+		def is = new InfiniteSeq()
 		def size = 10001
 //		def size = 5
-		def c = s.generateUntil([2], new Primes().primeGenerator, { List it ->
+		def primes = is.generateUntil([2], new Primes().primeGenerator, { List it ->
 			it.size() == size
 		})
-		def e = c.last()
-		println e
-		assert(e == 104743)
+		def p = primes.last()
+		println p
+		assert(p == 104743)
 	}
 
 }

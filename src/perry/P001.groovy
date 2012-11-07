@@ -19,15 +19,18 @@ import groovy.transform.TypeChecked
  * Find the sum of all the multiples of 3 or 5 below 1000.
  *
  */
+@TypeChecked
+//@Grapes(
+//	@Grab(group='org.functionaljava', module='functionaljava', version='3.0')
+//)
 class P001 {
 
-	@TypeChecked
 	def p () {
-		def l = (1..1000)
-		def l2 = l.findAll { Integer it -> it % 3 == 0 || it % 5 == 0}
-		def sum = l2.sum()
+		def max = 1000 - 1
+		def list = (1..max).findAll { Integer it -> it % 3 == 0 || it % 5 == 0}
+		def sum = list.sum()
 		println "sum: ${sum}"
-		assert(sum == 234168)
+		assert(sum == 233168)
 	}
 
 }

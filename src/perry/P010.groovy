@@ -20,13 +20,10 @@ class P010 {
 
 	def p() {
 		def max = 2 * 10 ** 6
-//		def max = 10
 		def pg = new Primes().primeGenerator
-		def until = { List<Integer> it -> it.last() >= max}
-		def c = new InfiniteSeq().generateUntil([2], pg, until)
-//		def f = c[0..c.size() - 2]
-		def g = c.drop(c.size() - 1)
-		def d = g.sum()
+		def until = { List<Integer> it -> it.last() >= max }
+		def primes = new InfiniteSeq().generateUntil([2], pg, until)
+		def d = primes.drop(primes.size() - 1).sum()
 		println d
 //		1179908154
 	}

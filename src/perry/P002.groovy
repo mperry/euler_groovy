@@ -33,11 +33,10 @@ class P002 {
 			it.get(n - 1) + it.get(n - 2)
 		}
 		def max = 4 * 10 ** 6 - 1
-		def f2 = is.generateUntil([1, 2], gen, { List<Integer> it -> gen.call(it) > max})
-		def s = f2.findAll { Integer it -> it % 2 == 0}.sum()
-		println s
-		assert(s == 4613732)
-
+		def fibs = is.generateUntil([1, 2], gen, { List<Integer> it -> gen.call(it) > max})
+		def sum = fibs.findAll { Integer it -> it % 2 == 0}.sum()
+		println sum
+		assert(sum == 4613732)
 	}
 
 }

@@ -18,7 +18,7 @@ class Primes {
 		def start = l.last() + 1
 		def stop = false
 		while (!stop) {
-			if (start % 1000 == 0) {
+			if (start % 10000 == 0) {
 				println "Testing ${start}"
 			}
 			def localMax = ((Integer) Math.sqrt(start)) + 1

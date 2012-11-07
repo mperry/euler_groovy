@@ -28,14 +28,13 @@ import groovy.transform.TypeChecked
 @TypeChecked
 class P006 {
 
-
 	def p() {
-		int a = 100
-		def b = sumSquares(a)
-		def c = squareSum(a)
-		def d = c - b
-		println(d)
-		assert(d == 25164150)
+		int max = 100
+		def sumSquares = sumSquares(max)
+		def squareSums = squareSum(max)
+		def diff = squareSums - sumSquares
+		println(diff)
+		assert(diff == 25164150)
 	}
 
 	Integer squareSum(Integer n) {

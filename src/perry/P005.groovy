@@ -19,33 +19,33 @@ import groovy.transform.TypeChecked
  * numbers from 1 to 20?
  *
  */
-@TypeChecked
 class P005 {
 
 	def p() {
-
-		def a = smallestDivisible(10)
+//		def a = smallestDivisible(10)
+//		assert(a == 2520)
+		def a = smallestDivisible(20)
+		assert(a == 232792560)
 		println(a)
-//		assert(a == 232792560)
 	}
 
-	int smallestDivisible(Integer n) {
+	@TypeChecked
+	Integer smallestDivisible(Integer n) {
 		smallestDivisible(n, n)
-//		smallestDivisible(n, n).trampoline()
 	}
 
-	int smallestDivisible(Integer upto, Integer num) {
-
-		List<Integer> range = (1..upto).toList()
+//	@TypeChecked
+	Closure<Integer> smallestDivisible = { Integer max, Integer num ->
+		List<Integer> range = (1..max).toList()
 		def remainders = range.findAll{ Integer it -> num % it != 0}
-//		def remainders = a.findAll{it != 0}
 		if (remainders.empty) {
 			// all divisible
 			num
-
 		} else {
-			smallestDivisible(upto, num + upto)
+			smallestDivisible.trampoline(max, num + max)
+//			smallestDivisible(max, num + max)
 		}
-	}
+//	}
+	}.trampoline()
 
 }
