@@ -1,6 +1,5 @@
 package perry
 
-import fj.data.Stream
 import groovy.transform.TypeChecked
 
 /**

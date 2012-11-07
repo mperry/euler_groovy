@@ -11,9 +11,11 @@ import groovy.transform.TypeChecked
  * To change this template use File | Settings | File Templates.
  */
 @TypeChecked
+//@CompileStatic
 class Primes {
 
 //	@TypeChecked
+//	@CompileStatic
 	Closure<Integer> primeGenerator = { List<Integer> l ->
 		def start = l.last() + 1
 		def stop = false
@@ -25,9 +27,10 @@ class Primes {
 //			def a = l.findAll{ Integer it -> it <= localMax}.dropWhile{ Integer it -> start % it != 0}
 			def b = l.dropWhile { Integer it -> it <= localMax && start % it != 0 }
 			if (b.size() == 0) {
-
+				// all current primes less than sqrt(start) divide
 				stop = true
 			} else if (b.size() > 0 && start % b.head() != 0) {
+				// a prime
 //				println("found prime n: ${l.size() + 1} prime: ${start}")
 				stop = true
 			} else {
